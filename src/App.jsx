@@ -1,14 +1,14 @@
-import { useState } from 'react'
-import { 
-  Bot, 
-  Shield, 
-  Users, 
-  Zap, 
-  BarChart3, 
-  Globe, 
-  Star, 
-  CheckCircle, 
-  Menu, 
+import { useState } from "react";
+import {
+  Bot,
+  Shield,
+  Users,
+  Zap,
+  BarChart3,
+  Globe,
+  Star,
+  CheckCircle,
+  Menu,
   X,
   ArrowRight,
   MessageSquare,
@@ -16,195 +16,217 @@ import {
   TrendingUp,
   Check,
   Play,
-  Pause
-} from 'lucide-react'
+  Award,
+  Building,
+  HeadphonesIcon,
+  ChevronDown,
+} from "lucide-react";
 
 function App() {
-  const [isMenuOpen, setIsMenuOpen] = useState(false)
-  const [activeDemo, setActiveDemo] = useState(0)
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [activeDemo, setActiveDemo] = useState(0);
   const [formData, setFormData] = useState({
-    name: '',
-    email: '',
-    company: '',
-    projectType: '',
-    message: ''
-  })
+    name: "",
+    email: "",
+    company: "",
+    projectType: "",
+    message: "",
+  });
 
   const handleInputChange = (e) => {
     setFormData({
       ...formData,
-      [e.target.name]: e.target.value
-    })
-  }
+      [e.target.name]: e.target.value,
+    });
+  };
 
   const handleSubmit = (e) => {
-    e.preventDefault()
-    console.log('Form submitted:', formData)
-    alert('Thanks for your interest! We\'ll be in touch within 24 hours.')
-  }
+    e.preventDefault();
+    console.log("Form submitted:", formData);
+    alert("Thanks for your interest! We'll be in touch within 24 hours.");
+  };
 
   const features = [
     {
       icon: MessageSquare,
-      title: 'Smart Q&A',
-      description: 'AI answers project-specific questions instantly with deep knowledge of your ecosystem'
+      title: "Intelligent Q&A System",
+      description:
+        "Advanced AI that understands your project's context and provides accurate, real-time responses to complex user queries.",
     },
     {
       icon: Users,
-      title: 'Onboarding Flows',
-      description: 'Guides new members through your ecosystem with personalized welcome sequences'
+      title: "Automated Onboarding",
+      description:
+        "Seamlessly guide new community members through your ecosystem with personalized welcome flows and educational content.",
     },
     {
       icon: Zap,
-      title: 'Real-time Updates',
-      description: 'Pushes news, announcements, price alerts, and governance updates automatically'
+      title: "Real-time Notifications",
+      description:
+        "Instant delivery of critical updates, announcements, and market alerts to keep your community informed and engaged.",
     },
     {
       icon: Shield,
-      title: 'Community Moderation',
-      description: 'Auto-moderates spam and maintains quality discussions with advanced AI filtering'
+      title: "Advanced Moderation",
+      description:
+        "AI-powered content filtering and community management tools that maintain quality while reducing manual oversight.",
     },
     {
       icon: BarChart3,
-      title: 'Analytics Dashboard',
-      description: 'Track engagement metrics, user satisfaction, and community growth patterns'
+      title: "Comprehensive Analytics",
+      description:
+        "Deep insights into community engagement, user behavior patterns, and growth metrics to optimize your strategy.",
     },
     {
       icon: Globe,
-      title: 'Multi-language Support',
-      description: 'Serves global communities with native language support for 20+ languages'
-    }
-  ]
+      title: "Global Reach",
+      description:
+        "Multi-language support and localization features to serve diverse communities across different regions and cultures.",
+    },
+  ];
 
   const testimonials = [
     {
-      name: 'Alex Chen',
-      company: 'DeFiProtocol',
-      role: 'Founder',
-      content: 'AgentForge increased our community engagement by 340% and reduced support tickets by 60%. Game-changer for our growth.',
-      results: '340% engagement increase'
+      name: "Alexander Chen",
+      company: "DeFi Global Protocol",
+      role: "Chief Technology Officer",
+      content:
+        "AgentForge has revolutionized our community management. We've seen a 380% increase in user engagement and dramatically reduced our support overhead. The AI's understanding of complex DeFi concepts is impressive.",
+      results: "380% engagement increase",
+      avatar: "AC",
     },
     {
-      name: 'Sarah Martinez',
-      company: 'CryptoArt Collective',
-      role: 'Community Manager',
-      content: 'The AI agent handles complex questions about our NFT mechanics 24/7. Our community loves the instant, accurate responses.',
-      results: '24/7 automated support'
+      name: "Sarah Martinez",
+      company: "Enterprise Blockchain Solutions",
+      role: "Head of Community Operations",
+      content:
+        "The 24/7 intelligent support has been a game-changer. Our community receives instant, accurate responses to technical questions, allowing our team to focus on strategic initiatives rather than repetitive support tasks.",
+      results: "24/7 automated excellence",
+      avatar: "SM",
     },
     {
-      name: 'Marcus Thompson',
-      company: 'GameFi Champions',
-      role: 'Head of Growth',
-      content: 'Since implementing AgentForge, our new user onboarding completion rate jumped from 23% to 87%. Incredible ROI.',
-      results: '87% onboarding completion'
-    }
-  ]
+      name: "Marcus Thompson",
+      company: "Digital Asset Management",
+      role: "VP of User Experience",
+      content:
+        "Implementation of AgentForge increased our new user onboarding completion rate from 28% to 91%. The personalized guidance and intelligent flow management exceeded all our expectations.",
+      results: "91% onboarding success",
+      avatar: "MT",
+    },
+  ];
 
   const demoScenarios = [
     {
-      type: 'DeFi Protocol',
-      project: 'YieldFarm Pro',
-      user: 'CryptoTrader_99',
-      question: 'How does your liquidity mining work and what are the current APY rates?',
-      response: 'Our liquidity mining rewards LPs with YIELD tokens! 📊 Current APYs: ETH-USDC: 12.5%, YIELD-ETH: 18.3%. You earn rewards every block (~13s). LP tokens are automatically staked. Min stake: 0.1 ETH equivalent. Want me to guide you through providing liquidity?',
-      metrics: 'Reduced support tickets by 80%',
-      bgGradient: 'from-green-500/20 to-emerald-500/20',
-      borderColor: 'border-green-500/30'
+      type: "DeFi Protocol",
+      project: "YieldFarm Pro",
+      user: "CryptoTrader_99",
+      question:
+        "How does your liquidity mining work and what are the current APY rates?",
+      response:
+        "Our liquidity mining rewards LPs with YIELD tokens! 📊 Current APYs: ETH-USDC: 12.5%, YIELD-ETH: 18.3%. You earn rewards every block (~13s). LP tokens are automatically staked. Min stake: 0.1 ETH equivalent. Want me to guide you through providing liquidity?",
+      metrics: "Reduced support tickets by 80%",
+      bgGradient: "from-green-500/20 to-emerald-500/20",
+      borderColor: "border-green-500/30",
     },
     {
-      type: 'NFT Project',
-      project: 'CyberApes Collection',
-      user: 'NFTCollector',
-      question: 'When is the mint date and what are the rarity percentages?',
-      response: 'Mint goes live October 15th, 2PM UTC! 🚀 10,000 unique CyberApes. Rarity breakdown: Common (60%), Rare (25%), Epic (12%), Legendary (2.5%), Mythic (0.5%). Mint price: 0.08 ETH. Whitelist gets 24h early access. Check #announcements for WL spots!',
-      metrics: '94% user satisfaction score',
-      bgGradient: 'from-purple-500/20 to-pink-500/20',
-      borderColor: 'border-purple-500/30'
+      type: "NFT Project",
+      project: "CyberApes Collection",
+      user: "NFTCollector",
+      question: "When is the mint date and what are the rarity percentages?",
+      response:
+        "Mint goes live October 15th, 2PM UTC! 🚀 10,000 unique CyberApes. Rarity breakdown: Common (60%), Rare (25%), Epic (12%), Legendary (2.5%), Mythic (0.5%). Mint price: 0.08 ETH. Whitelist gets 24h early access. Check #announcements for WL spots!",
+      metrics: "94% user satisfaction score",
+      bgGradient: "from-purple-500/20 to-pink-500/20",
+      borderColor: "border-purple-500/30",
     },
     {
-      type: 'Gaming Project',
-      project: 'MetaVerse Warriors',
-      user: 'GameMaster_X',
-      question: 'How do I earn $WAR tokens and what can I spend them on?',
-      response: 'Earn $WAR tokens by: ⚔️ Winning battles (+50-200 $WAR), 🏆 Tournament victories (+500-2000 $WAR), 📅 Daily quests (+25-100 $WAR). Spend on: Weapon upgrades, Character skins, Land plots in MetaVerse, Staking for 15% APY. Current $WAR price: $0.034',
-      metrics: '+340% community engagement',
-      bgGradient: 'from-blue-500/20 to-cyan-500/20',
-      borderColor: 'border-blue-500/30'
+      type: "Gaming Project",
+      project: "MetaVerse Warriors",
+      user: "GameMaster_X",
+      question: "How do I earn $WAR tokens and what can I spend them on?",
+      response:
+        "Earn $WAR tokens by: ⚔️ Winning battles (+50-200 $WAR), 🏆 Tournament victories (+500-2000 $WAR), 📅 Daily quests (+25-100 $WAR). Spend on: Weapon upgrades, Character skins, Land plots in MetaVerse, Staking for 15% APY. Current $WAR price: $0.034",
+      metrics: "+340% community engagement",
+      bgGradient: "from-blue-500/20 to-cyan-500/20",
+      borderColor: "border-blue-500/30",
     },
     {
-      type: 'Layer 1 Chain',
-      project: 'ChainForge Network',
-      user: 'ValidatorPro',
-      question: 'What are the staking requirements and validator rewards?',
-      response: 'Become a validator with 32,000 $FORGE minimum stake! 🔗 Current rewards: 8.5% APY for validators, 6.2% for delegators. Delegation minimum: 100 $FORGE. Unbonding period: 21 days. Network has 150 active validators. Slashing conditions: Double-signing (5%), Downtime >12hrs (0.1%)',
-      metrics: '99.9% network uptime maintained',
-      bgGradient: 'from-orange-500/20 to-red-500/20',
-      borderColor: 'border-orange-500/30'
-    }
-  ]
+      type: "Layer 1 Chain",
+      project: "ChainForge Network",
+      user: "ValidatorPro",
+      question: "What are the staking requirements and validator rewards?",
+      response:
+        "Become a validator with 32,000 $FORGE minimum stake! 🔗 Current rewards: 8.5% APY for validators, 6.2% for delegators. Delegation minimum: 100 $FORGE. Unbonding period: 21 days. Network has 150 active validators. Slashing conditions: Double-signing (5%), Downtime >12hrs (0.1%)",
+      metrics: "99.9% network uptime maintained",
+      bgGradient: "from-orange-500/20 to-red-500/20",
+      borderColor: "border-orange-500/30",
+    },
+  ];
 
   const pricingTiers = [
     {
-      name: 'Starter',
-      price: '$299',
-      period: '/month',
-      description: 'Perfect for small communities',
-      subtitle: '< 5K members',
+      name: "Professional",
+      price: "$599",
+      period: "/month",
+      description: "Ideal for growing organizations",
+      subtitle: "Up to 10,000 members",
       features: [
-        '1 Discord server integration',
-        'Pre-trained on 50+ crypto topics',
-        'Basic Q&A responses',
-        'Community support',
-        '10,000 messages/month',
-        'Basic analytics dashboard'
+        "Advanced AI conversation engine",
+        "Custom knowledge base training",
+        "Priority support (4-hour response)",
+        "Advanced analytics dashboard",
+        "Multi-platform integration",
+        "Custom branding options",
+        "API access included",
+        "Monthly strategy consultation",
       ],
-      notIncluded: [
-        'Custom training',
-        'Multi-server support'
-      ],
-      cta: 'Start Free Trial',
-      popular: false
+      cta: "Start Free Trial",
+      popular: false,
+      accent: "border-white/20",
     },
     {
-      name: 'Professional',
-      price: '$699',
-      period: '/month',
-      description: 'Perfect for growing projects',
-      subtitle: '5K-20K members',
+      name: "Enterprise",
+      price: "$1,299",
+      period: "/month",
+      description: "Complete solution for large teams",
+      subtitle: "Up to 50,000 members",
       features: [
-        'Up to 3 Discord servers',
-        'Custom training on YOUR project',
-        'Advanced personality customization',
-        'Priority support (< 4 hour response)',
-        '50,000 messages/month',
-        'Advanced analytics + exports',
-        'Custom commands and workflows',
-        'Integration with your website/docs'
+        "Everything in Professional",
+        "Dedicated account manager",
+        "Custom AI model development",
+        "White-label deployment",
+        "Advanced security features",
+        "99.9% uptime SLA",
+        "Unlimited integrations",
+        "Weekly performance reviews",
+        "Custom onboarding program",
       ],
-      cta: 'Start Free Trial',
-      popular: true
+      cta: "Contact Sales",
+      popular: true,
+      accent: "border-yellow-500/50 bg-gradient-to-br from-yellow-500/5 to-amber-500/5",
     },
     {
-      name: 'Enterprise',
-      price: 'Custom',
-      period: 'pricing',
-      description: 'Perfect for major projects',
-      subtitle: '20K+ members',
+      name: "Global Scale",
+      price: "Custom",
+      period: "pricing",
+      description: "Enterprise-grade for global operations",
+      subtitle: "500,000+ members",
       features: [
-        'Unlimited Discord servers',
-        'White-label solution',
-        'Dedicated customer success manager',
-        'Custom AI model training',
-        'Unlimited messages',
-        'API access and webhooks',
-        'Custom integrations (Telegram, Twitter)',
-        '99.9% SLA guarantee',
-        'Premium onboarding (2 weeks)'
+        "Everything in Enterprise",
+        "Multi-region deployment",
+        "Custom compliance solutions",
+        "Dedicated infrastructure",
+        "Advanced AI customization",
+        "24/7 premium support",
+        "Custom contract terms",
+        "Executive-level reporting",
+        "Global rollout assistance",
       ],
-      cta: 'Contact Sales',
-      popular: false
-    }
-  ]
+      cta: "Schedule Consultation",
+      popular: false,
+      accent: "border-white/20",
+    },
+  ];
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-slate-950 via-purple-950 to-slate-950 relative overflow-hidden">
@@ -221,31 +243,62 @@ function App() {
         <div className="relative max-w-7xl mx-auto px-6 lg:px-8">
           <div className="flex justify-between items-center py-4">
             <div className="flex items-center space-x-3">
-              <div className="relative">
+              {/* <div className="relative">
                 <Bot className="h-10 w-10 text-purple-400 drop-shadow-glow" />
                 <div className="absolute inset-0 bg-purple-400 blur-xl opacity-30 animate-pulse"></div>
-              </div>
-              <span className="text-3xl font-black gradient-text tracking-tight">AgentForge</span>
+              </div> */}
+              <span className="text-xl font-black gradient-text tracking-tight">
+                AgentForge
+              </span>
             </div>
-            
+
             {/* Desktop Navigation */}
             <nav className="hidden md:flex items-center space-x-8">
-              <a href="#features" className="text-gray-300 hover:text-white transition-all duration-300 font-medium hover:scale-105">Features</a>
-              <a href="#showcase" className="text-gray-300 hover:text-white transition-all duration-300 font-medium hover:scale-105">Showcase</a>
-              <a href="#pricing" className="text-gray-300 hover:text-white transition-all duration-300 font-medium hover:scale-105">Pricing</a>
-              <a href="#testimonials" className="text-gray-300 hover:text-white transition-all duration-300 font-medium hover:scale-105">Testimonials</a>
-              <a href="#contact" className="text-gray-300 hover:text-white transition-all duration-300 font-medium hover:scale-105">Contact</a>
-              <button className="bg-gradient-to-r from-purple-600 to-blue-600 px-8 py-3 rounded-xl text-white font-bold shadow-2xl hover:shadow-purple-500/25 hover:scale-105 transition-all duration-300 border border-white/10">
+              <a
+                href="#features"
+                className="text-sm text-gray-300 hover:text-white transition-all duration-300 font-medium hover:scale-105"
+              >
+                Features
+              </a>
+              <a
+                href="#showcase"
+                className="text-sm text-gray-300 hover:text-white transition-all duration-300 font-medium hover:scale-105"
+              >
+                Showcase
+              </a>
+              <a
+                href="#pricing"
+                className="text-sm text-gray-300 hover:text-white transition-all duration-300 font-medium hover:scale-105"
+              >
+                Pricing
+              </a>
+              <a
+                href="#testimonials"
+                className="text-sm text-gray-300 hover:text-white transition-all duration-300 font-medium hover:scale-105"
+              >
+                Testimonials
+              </a>
+              <a
+                href="#contact"
+                className="text-sm text-gray-300 hover:text-white transition-all duration-300 font-medium hover:scale-105"
+              >
+                Contact
+              </a>
+              <button className="text-sm bg-gradient-to-r from-purple-600 to-blue-600 px-8 py-3 rounded-xl text-white font-bold shadow-2xl hover:shadow-purple-500/25 hover:scale-105 transition-all duration-300 border border-white/10">
                 Get Demo
               </button>
             </nav>
 
             {/* Mobile menu button */}
-            <button 
+            <button
               className="md:hidden text-white"
               onClick={() => setIsMenuOpen(!isMenuOpen)}
             >
-              {isMenuOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
+              {isMenuOpen ? (
+                <X className="h-6 w-6" />
+              ) : (
+                <Menu className="h-6 w-6" />
+              )}
             </button>
           </div>
         </div>
@@ -254,11 +307,36 @@ function App() {
         {isMenuOpen && (
           <div className="md:hidden bg-black/80 backdrop-blur-xl mx-4 mb-4 p-6 rounded-2xl border border-white/20 shadow-2xl">
             <nav className="flex flex-col space-y-4">
-              <a href="#features" className="text-gray-300 hover:text-white transition-colors">Features</a>
-              <a href="#showcase" className="text-gray-300 hover:text-white transition-colors">Showcase</a>
-              <a href="#pricing" className="text-gray-300 hover:text-white transition-colors">Pricing</a>
-              <a href="#testimonials" className="text-gray-300 hover:text-white transition-colors">Testimonials</a>
-              <a href="#contact" className="text-gray-300 hover:text-white transition-colors">Contact</a>
+              <a
+                href="#features"
+                className="text-gray-300 hover:text-white transition-colors"
+              >
+                Features
+              </a>
+              <a
+                href="#showcase"
+                className="text-gray-300 hover:text-white transition-colors"
+              >
+                Showcase
+              </a>
+              <a
+                href="#pricing"
+                className="text-gray-300 hover:text-white transition-colors"
+              >
+                Pricing
+              </a>
+              <a
+                href="#testimonials"
+                className="text-gray-300 hover:text-white transition-colors"
+              >
+                Testimonials
+              </a>
+              <a
+                href="#contact"
+                className="text-gray-300 hover:text-white transition-colors"
+              >
+                Contact
+              </a>
               <button className="bg-gradient-to-r from-purple-600 to-blue-600 px-6 py-2 rounded-lg text-white font-semibold w-full">
                 Get Demo
               </button>
@@ -268,24 +346,34 @@ function App() {
       </header>
 
       {/* Hero Section */}
-      <section className="relative pt-40 pb-32 px-6 lg:px-8">
+      <section className="relative pt-40 px-6 lg:px-8">
         <div className="relative max-w-7xl mx-auto">
           <div className="text-center">
-            <div className="mb-8">
+            <div className="mb-10">
               <span className="inline-flex items-center px-4 py-2 rounded-full text-sm font-medium bg-gradient-to-r from-purple-500/20 to-blue-500/20 text-purple-300 border border-purple-500/30 shadow-xl">
                 🚀 Trusted by 100+ Web3 Projects
               </span>
             </div>
-            <h1 className="text-6xl md:text-8xl lg:text-9xl font-black mb-8 leading-none">
-              Transform Your{' '}
-              <span className="gradient-text animate-gradient">Web3 Community</span>
+            <h1 className="text-5xl md:text-7xl font-black mb-8 leading-none ">
+              Transform Your{" "}
+              <span className="gradient-text animate-gradient">
+                Web3 Community
+              </span>
               <br />
-              <span className="text-white/90">with</span> <span className="gradient-text">AI Agents</span>
+              <span className="text-white/90">with</span>{" "}
+              <span className="gradient-text">AI Agents</span>
             </h1>
-            <p className="text-2xl md:text-3xl text-gray-300 mb-12 max-w-5xl mx-auto leading-relaxed font-light">
-              Custom AI bots that <span className="font-semibold text-white">educate users</span>, <span className="font-semibold text-white">answer questions 24/7</span>, and <span className="font-semibold text-white">boost engagement</span> by 340%.
+            <p className="text-lg md:text-2xl text-gray-300 mb-10 max-w-5xl mx-auto leading-relaxed font-light">
+              Custom AI bots that{" "}
+              <span className="font-semibold text-white">educate users</span>,{" "}
+              <span className="font-semibold text-white">
+                answer questions 24/7
+              </span>
+              , and{" "}
+              <span className="font-semibold text-white">boost engagement</span>{" "}
+              by 340%.
             </p>
-            
+
             {/* Key Stats */}
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-16 max-w-4xl mx-auto">
               <div className="bg-gradient-to-br from-green-500/10 to-emerald-500/10 backdrop-blur-xl p-6 rounded-2xl border border-green-500/20 shadow-2xl hover:scale-105 transition-all duration-300">
@@ -301,7 +389,9 @@ function App() {
               <div className="bg-gradient-to-br from-purple-500/10 to-pink-500/10 backdrop-blur-xl p-6 rounded-2xl border border-purple-500/20 shadow-2xl hover:scale-105 transition-all duration-300">
                 <MessageSquare className="h-8 w-8 text-purple-400 mb-3 mx-auto" />
                 <div className="text-2xl font-bold text-white mb-1">500K+</div>
-                <div className="text-purple-300 font-medium">Questions Solved</div>
+                <div className="text-purple-300 font-medium">
+                  Questions Solved
+                </div>
               </div>
             </div>
 
@@ -319,52 +409,8 @@ function App() {
             </div>
 
             {/* Trust Badges */}
-            <div className="flex flex-wrap justify-center items-center gap-8">
-              <div className="group flex items-center space-x-3 bg-gradient-to-r from-green-500/10 to-emerald-500/10 px-6 py-3 rounded-xl border border-green-500/20 backdrop-blur-xl shadow-xl hover:scale-105 transition-all duration-300">
-                <Shield className="h-5 w-5 text-green-400" />
-                <span className="text-sm font-semibold text-green-300">SOC 2 Compliant</span>
-              </div>
-              <div className="group flex items-center space-x-3 bg-gradient-to-r from-blue-500/10 to-cyan-500/10 px-6 py-3 rounded-xl border border-blue-500/20 backdrop-blur-xl shadow-xl hover:scale-105 transition-all duration-300">
-                <Zap className="h-5 w-5 text-blue-400" />
-                <span className="text-sm font-semibold text-blue-300">Enterprise Ready</span>
-              </div>
-              <div className="group flex items-center space-x-3 bg-gradient-to-r from-purple-500/10 to-pink-500/10 px-6 py-3 rounded-xl border border-purple-500/20 backdrop-blur-xl shadow-xl hover:scale-105 transition-all duration-300">
-                <Globe className="h-5 w-5 text-purple-400" />
-                <span className="text-sm font-semibold text-purple-300">GDPR Compliant</span>
-              </div>
-            </div>
-            
-            {/* Hero Visual Element */}
-            <div className="mt-20 relative">
-              <div className="max-w-4xl mx-auto">
-                <div className="relative bg-gradient-to-br from-slate-800/50 to-slate-900/50 backdrop-blur-xl rounded-3xl border border-white/10 shadow-2xl p-8 hover:scale-105 transition-all duration-700">
-                  <div className="absolute inset-0 bg-gradient-to-r from-purple-500/10 via-transparent to-blue-500/10 rounded-3xl"></div>
-                  <div className="relative">
-                    <div className="flex items-center space-x-4 mb-6">
-                      <div className="w-3 h-3 bg-red-500 rounded-full"></div>
-                      <div className="w-3 h-3 bg-yellow-500 rounded-full"></div>
-                      <div className="w-3 h-3 bg-green-500 rounded-full"></div>
-                      <div className="flex-1 bg-slate-700 rounded-full px-4 py-2">
-                        <span className="text-slate-400 text-sm">#general - Discord</span>
-                      </div>
-                    </div>
-                    <div className="space-y-4">
-                      <div className="flex items-start space-x-3">
-                        <div className="w-8 h-8 bg-blue-500 rounded-full flex items-center justify-center text-sm font-bold">U</div>
-                        <div className="bg-slate-700 rounded-2xl rounded-tl-sm px-4 py-3 max-w-xs">
-                          <p className="text-white text-sm">What's the current staking APY?</p>
-                        </div>
-                      </div>
-                      <div className="flex items-start space-x-3">
-                        <Bot className="w-8 h-8 text-green-400" />
-                        <div className="bg-gradient-to-r from-green-600/20 to-emerald-600/20 border border-green-500/30 rounded-2xl rounded-tl-sm px-4 py-3 max-w-md">
-                          <p className="text-white text-sm">Current staking APY is <span className="font-bold text-green-400">12.5%</span> with 21-day unbonding. You can stake at stake.example.com 🚀</p>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
+            <div className="flex flex-wrap justify-center items-center">
+              <RiScrollToBottomLine className="h-10 w-10 text-blue-400 animate-bounce" />
             </div>
           </div>
         </div>
@@ -375,45 +421,66 @@ function App() {
         <div className="absolute inset-0 bg-gradient-to-b from-transparent via-purple-950/20 to-transparent"></div>
         <div className="relative max-w-7xl mx-auto">
           <div className="text-center mb-20">
-            <div className="mb-6">
-              <span className="inline-flex items-center px-4 py-2 rounded-full text-sm font-medium bg-gradient-to-r from-purple-500/20 to-blue-500/20 text-purple-300 border border-purple-500/30">
-                ✨ Powerful Features
-              </span>
-            </div>
             <h2 className="text-5xl md:text-7xl font-black mb-8">
-              Built for{' '}
-              <span className="gradient-text">Web3 Scale</span>
+              Built for <span className="gradient-text">Web3 Scale</span>
             </h2>
             <p className="text-2xl text-gray-300 max-w-4xl mx-auto leading-relaxed">
-              Everything you need to create <span className="font-semibold text-white">engaging</span>, <span className="font-semibold text-white">informative</span>, and <span className="font-semibold text-white">automated</span> community experiences
+              Everything you need to create{" "}
+              <span className="font-semibold text-white">engaging</span>,{" "}
+              <span className="font-semibold text-white">informative</span>, and{" "}
+              <span className="font-semibold text-white">automated</span>{" "}
+              community experiences
             </p>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {features.map((feature, index) => {
-              const IconComponent = feature.icon
+              const IconComponent = feature.icon;
               const gradients = [
-                'from-purple-500/20 to-pink-500/20 border-purple-500/30',
-                'from-blue-500/20 to-cyan-500/20 border-blue-500/30',
-                'from-green-500/20 to-emerald-500/20 border-green-500/30',
-                'from-orange-500/20 to-red-500/20 border-orange-500/30',
-                'from-indigo-500/20 to-purple-500/20 border-indigo-500/30',
-                'from-teal-500/20 to-green-500/20 border-teal-500/30'
-              ]
-              const iconColors = ['text-purple-400', 'text-blue-400', 'text-green-400', 'text-orange-400', 'text-indigo-400', 'text-teal-400']
+                "from-purple-500/20 to-pink-500/20 border-purple-500/30",
+                "from-blue-500/20 to-cyan-500/20 border-blue-500/30",
+                "from-green-500/20 to-emerald-500/20 border-green-500/30",
+                "from-orange-500/20 to-red-500/20 border-orange-500/30",
+                "from-indigo-500/20 to-purple-500/20 border-indigo-500/30",
+                "from-teal-500/20 to-green-500/20 border-teal-500/30",
+              ];
+              const iconColors = [
+                "text-purple-400",
+                "text-blue-400",
+                "text-green-400",
+                "text-orange-400",
+                "text-indigo-400",
+                "text-teal-400",
+              ];
               return (
-                <div key={index} className={`group relative bg-gradient-to-br ${gradients[index]} backdrop-blur-xl p-8 rounded-2xl border shadow-2xl hover:scale-105 hover:shadow-3xl transition-all duration-500 cursor-pointer`}>
+                <div
+                  key={index}
+                  className={`group relative bg-gradient-to-br ${gradients[index]} backdrop-blur-xl p-8 rounded-2xl border shadow-2xl hover:scale-105 hover:shadow-3xl transition-all duration-500 cursor-pointer`}
+                >
                   <div className="absolute inset-0 bg-gradient-to-br from-white/5 to-transparent rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
                   <div className="relative">
                     <div className="mb-6 relative">
-                      <IconComponent className={`h-16 w-16 ${iconColors[index]} group-hover:scale-110 transition-all duration-300 drop-shadow-glow`} />
-                      <div className={`absolute inset-0 ${iconColors[index].replace('text-', 'bg-')} blur-xl opacity-20 group-hover:opacity-40 transition-opacity rounded-full`}></div>
+                      <IconComponent
+                        className={`h-16 w-16 ${iconColors[index]} group-hover:scale-110 transition-all duration-300 drop-shadow-glow`}
+                      />
+                      <div
+                        className={`absolute inset-0 ${iconColors[
+                          index
+                        ].replace(
+                          "text-",
+                          "bg-"
+                        )} blur-xl opacity-20 group-hover:opacity-40 transition-opacity rounded-full`}
+                      ></div>
                     </div>
-                    <h3 className="text-2xl font-bold mb-4 text-white group-hover:text-white transition-colors">{feature.title}</h3>
-                    <p className="text-gray-300 leading-relaxed group-hover:text-gray-200 transition-colors">{feature.description}</p>
+                    <h3 className="text-2xl font-bold mb-4 text-white group-hover:text-white transition-colors">
+                      {feature.title}
+                    </h3>
+                    <p className="text-gray-300 leading-relaxed group-hover:text-gray-200 transition-colors">
+                      {feature.description}
+                    </p>
                   </div>
                 </div>
-              )
+              );
             })}
           </div>
         </div>
@@ -430,11 +497,13 @@ function App() {
               </span>
             </div>
             <h2 className="text-5xl md:text-7xl font-black mb-8">
-              See AgentForge{' '}
-              <span className="gradient-text">In Action</span>
+              See AgentForge <span className="gradient-text">In Action</span>
             </h2>
             <p className="text-2xl text-gray-300 max-w-4xl mx-auto leading-relaxed">
-              Real examples from crypto projects using AI agents to <span className="font-semibold text-white">transform their communities</span>
+              Real examples from crypto projects using AI agents to{" "}
+              <span className="font-semibold text-white">
+                transform their communities
+              </span>
             </p>
           </div>
 
@@ -452,9 +521,17 @@ function App() {
                       <div className="w-3 h-3 bg-green-500 rounded-full"></div>
                     </div>
                     <div className="flex-1 bg-slate-700 rounded-full px-4 py-2 mx-4">
-                      <span className="text-slate-400 text-sm">#{demoScenarios[activeDemo].project.toLowerCase().replace(/\s+/g, '-')} - Discord</span>
+                      <span className="text-slate-400 text-sm">
+                        #
+                        {demoScenarios[activeDemo].project
+                          .toLowerCase()
+                          .replace(/\s+/g, "-")}{" "}
+                        - Discord
+                      </span>
                     </div>
-                    <div className="text-xs text-gray-400">#{demoScenarios[activeDemo].type}</div>
+                    <div className="text-xs text-gray-400">
+                      #{demoScenarios[activeDemo].type}
+                    </div>
                   </div>
 
                   {/* Chat Messages */}
@@ -465,27 +542,43 @@ function App() {
                       </div>
                       <div className="flex-1">
                         <div className="flex items-center space-x-2 mb-1">
-                          <span className="font-semibold text-white">{demoScenarios[activeDemo].user}</span>
-                          <span className="text-xs text-gray-400">Today at 2:34 PM</span>
+                          <span className="font-semibold text-white">
+                            {demoScenarios[activeDemo].user}
+                          </span>
+                          <span className="text-xs text-gray-400">
+                            Today at 2:34 PM
+                          </span>
                         </div>
                         <div className="bg-slate-700 rounded-2xl rounded-tl-sm px-4 py-3">
-                          <p className="text-white text-sm">{demoScenarios[activeDemo].question}</p>
+                          <p className="text-white text-sm">
+                            {demoScenarios[activeDemo].question}
+                          </p>
                         </div>
                       </div>
                     </div>
-                    
+
                     <div className="flex items-start space-x-3">
                       <div className="w-8 h-8 bg-gradient-to-br from-green-500 to-emerald-500 rounded-full flex items-center justify-center">
                         <Bot className="w-5 h-5 text-white" />
                       </div>
                       <div className="flex-1">
                         <div className="flex items-center space-x-2 mb-1">
-                          <span className="font-semibold text-green-400">AgentForge AI</span>
-                          <span className="bg-green-500/20 text-green-300 text-xs px-2 py-0.5 rounded-full">BOT</span>
-                          <span className="text-xs text-gray-400">Today at 2:34 PM</span>
+                          <span className="font-semibold text-green-400">
+                            AgentForge AI
+                          </span>
+                          <span className="bg-green-500/20 text-green-300 text-xs px-2 py-0.5 rounded-full">
+                            BOT
+                          </span>
+                          <span className="text-xs text-gray-400">
+                            Today at 2:34 PM
+                          </span>
                         </div>
-                        <div className={`bg-gradient-to-r ${demoScenarios[activeDemo].bgGradient} border ${demoScenarios[activeDemo].borderColor} rounded-2xl rounded-tl-sm px-4 py-3`}>
-                          <p className="text-white text-sm leading-relaxed">{demoScenarios[activeDemo].response}</p>
+                        <div
+                          className={`bg-gradient-to-r ${demoScenarios[activeDemo].bgGradient} border ${demoScenarios[activeDemo].borderColor} rounded-2xl rounded-tl-sm px-4 py-3`}
+                        >
+                          <p className="text-white text-sm leading-relaxed">
+                            {demoScenarios[activeDemo].response}
+                          </p>
                         </div>
                         <div className="mt-2 text-xs text-green-400 font-medium">
                           ✓ {demoScenarios[activeDemo].metrics}
@@ -501,9 +594,9 @@ function App() {
                         key={index}
                         onClick={() => setActiveDemo(index)}
                         className={`w-3 h-3 rounded-full transition-all duration-300 ${
-                          index === activeDemo 
-                            ? 'bg-green-500 scale-125' 
-                            : 'bg-gray-600 hover:bg-gray-500'
+                          index === activeDemo
+                            ? "bg-green-500 scale-125"
+                            : "bg-gray-600 hover:bg-gray-500"
                         }`}
                       />
                     ))}
@@ -515,8 +608,12 @@ function App() {
             {/* Before/After Metrics */}
             <div className="space-y-8">
               <div className="text-center mb-8">
-                <h3 className="text-3xl font-bold mb-4 text-white">Before vs After Metrics</h3>
-                <p className="text-gray-300">Real results from our crypto project partners</p>
+                <h3 className="text-3xl font-bold mb-4 text-white">
+                  Before vs After Metrics
+                </h3>
+                <p className="text-gray-300">
+                  Real results from our crypto project partners
+                </p>
               </div>
 
               <div className="grid grid-cols-1 gap-6">
@@ -553,11 +650,15 @@ function App() {
                   <div className="grid grid-cols-2 gap-4 text-sm">
                     <div>
                       <div className="text-gray-400">Response Time</div>
-                      <div className="text-green-300 font-bold">&lt; 30 seconds</div>
+                      <div className="text-green-300 font-bold">
+                        &lt; 30 seconds
+                      </div>
                     </div>
                     <div>
                       <div className="text-gray-400">Support Tickets</div>
-                      <div className="text-green-300 font-bold">50/day (-75%)</div>
+                      <div className="text-green-300 font-bold">
+                        50/day (-75%)
+                      </div>
                     </div>
                     <div>
                       <div className="text-gray-400">User Satisfaction</div>
@@ -584,19 +685,25 @@ function App() {
           {/* Rotating Demo Cards */}
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
             {demoScenarios.map((scenario, index) => (
-              <div 
+              <div
                 key={index}
                 onClick={() => setActiveDemo(index)}
                 className={`cursor-pointer transition-all duration-300 ${
-                  index === activeDemo 
-                    ? 'transform scale-105' 
-                    : 'hover:scale-105 opacity-80 hover:opacity-100'
+                  index === activeDemo
+                    ? "transform scale-105"
+                    : "hover:scale-105 opacity-80 hover:opacity-100"
                 }`}
               >
-                <div className={`bg-gradient-to-br ${scenario.bgGradient} backdrop-blur-xl p-6 rounded-2xl border ${scenario.borderColor} shadow-xl`}>
+                <div
+                  className={`bg-gradient-to-br ${scenario.bgGradient} backdrop-blur-xl p-6 rounded-2xl border ${scenario.borderColor} shadow-xl`}
+                >
                   <div className="text-center">
-                    <h4 className="font-bold text-white mb-2">{scenario.type}</h4>
-                    <p className="text-sm text-gray-300 mb-3">{scenario.project}</p>
+                    <h4 className="font-bold text-white mb-2">
+                      {scenario.type}
+                    </h4>
+                    <p className="text-sm text-gray-300 mb-3">
+                      {scenario.project}
+                    </p>
                     <div className="text-xs font-medium text-green-400">
                       {scenario.metrics}
                     </div>
@@ -613,24 +720,26 @@ function App() {
         <div className="absolute inset-0 bg-gradient-to-b from-transparent via-blue-950/20 to-transparent"></div>
         <div className="relative max-w-7xl mx-auto">
           <div className="text-center mb-20">
-            <div className="mb-6">
-              <span className="inline-flex items-center px-4 py-2 rounded-full text-sm font-medium bg-gradient-to-r from-green-500/20 to-emerald-500/20 text-green-300 border border-green-500/30">
-                💰 Transparent Pricing
-              </span>
-            </div>
             <h2 className="text-5xl md:text-7xl font-black mb-8">
-              Simple,{' '}
-              <span className="gradient-text">Fair Pricing</span>
+              Simple, <span className="gradient-text">Fair Pricing</span>
             </h2>
             <p className="text-2xl text-gray-300 max-w-4xl mx-auto leading-relaxed mb-8">
-              Choose the perfect plan for your community size and needs. <span className="font-semibold text-white">30-day money-back guarantee</span> on all plans.
+              Choose the perfect plan for your community size and needs.{" "}
+              <span className="font-semibold text-white">
+                30-day money-back guarantee
+              </span>{" "}
+              on all plans.
             </p>
-            
+
             {/* Monthly/Annual Toggle */}
             <div className="flex justify-center">
               <div className="bg-slate-800/50 backdrop-blur-xl p-1 rounded-full border border-white/10">
-                <button className="px-6 py-2 bg-purple-600 rounded-full text-white font-medium">Monthly</button>
-                <button className="px-6 py-2 text-gray-400 font-medium hover:text-white transition-colors">Annual (Save 20%)</button>
+                <button className="px-6 py-2 bg-purple-600 rounded-full text-white font-medium">
+                  Monthly
+                </button>
+                <button className="px-6 py-2 text-gray-400 font-medium hover:text-white transition-colors">
+                  Annual (Save 20%)
+                </button>
               </div>
             </div>
           </div>
@@ -638,12 +747,12 @@ function App() {
           {/* Pricing Cards */}
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {pricingTiers.map((tier, index) => {
-              const cardClasses = tier.popular 
-                ? 'bg-gradient-to-br from-green-500/20 to-emerald-500/20 border-2 border-green-500/50 shadow-2xl shadow-green-500/20 scale-105'
-                : 'bg-gradient-to-br from-slate-800/40 to-slate-900/60 border border-white/10 hover:border-white/20'
+              const cardClasses = tier.popular
+                ? "bg-gradient-to-br from-green-500/20 to-emerald-500/20 border-2 border-green-500/50 shadow-2xl shadow-green-500/20 scale-105"
+                : "bg-gradient-to-br from-slate-800/40 to-slate-900/60 border border-white/10 hover:border-white/20";
               return (
-                <div 
-                  key={index} 
+                <div
+                  key={index}
                   className={`group relative ${cardClasses} backdrop-blur-xl p-10 rounded-3xl transition-all duration-500 hover:scale-105 cursor-pointer`}
                 >
                   <div className="absolute inset-0 bg-gradient-to-br from-white/5 to-transparent rounded-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
@@ -655,65 +764,67 @@ function App() {
                         </span>
                       </div>
                     )}
-                    
+
                     <div className="text-center mb-8">
-                      <h3 className="text-3xl font-bold text-white mb-2">{tier.name}</h3>
+                      <h3 className="text-3xl font-bold text-white mb-2">
+                        {tier.name}
+                      </h3>
                       <div className="mb-2">
-                        <span className="text-5xl font-black text-white">{tier.price}</span>
-                        {tier.price !== 'Custom' && <span className="text-gray-400 text-lg">{tier.period}</span>}
+                        <span className="text-5xl font-black text-white">
+                          {tier.price}
+                        </span>
+                        {tier.price !== "Custom" && (
+                          <span className="text-gray-400 text-lg">
+                            {tier.period}
+                          </span>
+                        )}
                       </div>
-                      <p className="text-gray-300 font-medium">{tier.description}</p>
+                      <p className="text-gray-300 font-medium">
+                        {tier.description}
+                      </p>
                       <p className="text-sm text-gray-400">{tier.subtitle}</p>
                     </div>
 
                     <ul className="space-y-4 mb-8">
                       {tier.features.map((feature, featureIndex) => (
-                        <li key={featureIndex} className="flex items-start space-x-3">
+                        <li
+                          key={featureIndex}
+                          className="flex items-start space-x-3"
+                        >
                           <Check className="h-5 w-5 text-green-500 mt-0.5 flex-shrink-0" />
                           <span className="text-gray-300">{feature}</span>
                         </li>
                       ))}
-                      {tier.notIncluded && tier.notIncluded.map((feature, featureIndex) => (
-                        <li key={`not-${featureIndex}`} className="flex items-start space-x-3 opacity-50">
-                          <X className="h-5 w-5 text-red-400 mt-0.5 flex-shrink-0" />
-                          <span className="text-gray-400 line-through">{feature}</span>
-                        </li>
-                      ))}
+                      {tier.notIncluded &&
+                        tier.notIncluded.map((feature, featureIndex) => (
+                          <li
+                            key={`not-${featureIndex}`}
+                            className="flex items-start space-x-3 opacity-50"
+                          >
+                            <X className="h-5 w-5 text-red-400 mt-0.5 flex-shrink-0" />
+                            <span className="text-gray-400 line-through">
+                              {feature}
+                            </span>
+                          </li>
+                        ))}
                     </ul>
 
-                    <button 
+                    <button
                       className={`w-full py-4 rounded-2xl font-bold text-lg transition-all duration-300 ${
-                        tier.popular 
-                          ? 'bg-gradient-to-r from-green-500 to-emerald-500 text-white shadow-2xl shadow-green-500/25 hover:scale-105 hover:shadow-green-500/40'
-                          : 'bg-gradient-to-r from-slate-700 to-slate-600 text-white hover:from-slate-600 hover:to-slate-500 shadow-xl hover:scale-105'
+                        tier.popular
+                          ? "bg-gradient-to-r from-green-500 to-emerald-500 text-white shadow-2xl shadow-green-500/25 hover:scale-105 hover:shadow-green-500/40"
+                          : "bg-gradient-to-r from-slate-700 to-slate-600 text-white hover:from-slate-600 hover:to-slate-500 shadow-xl hover:scale-105"
                       }`}
                     >
                       {tier.cta}
                     </button>
                   </div>
                 </div>
-              )
+              );
             })}
           </div>
 
           {/* Trust Signals */}
-          <div className="text-center mt-16">
-            <p className="text-gray-400 mb-6">Trusted by 100+ crypto projects worldwide</p>
-            <div className="flex flex-wrap justify-center gap-8 opacity-60">
-              <div className="bg-slate-800/30 px-6 py-3 rounded-lg backdrop-blur-xl">
-                <span className="text-gray-400 font-medium">💎 DeFi Alliance</span>
-              </div>
-              <div className="bg-slate-800/30 px-6 py-3 rounded-lg backdrop-blur-xl">
-                <span className="text-gray-400 font-medium">🎮 GameFi Guild</span>
-              </div>
-              <div className="bg-slate-800/30 px-6 py-3 rounded-lg backdrop-blur-xl">
-                <span className="text-gray-400 font-medium">🚀 Web3 Accelerator</span>
-              </div>
-              <div className="bg-slate-800/30 px-6 py-3 rounded-lg backdrop-blur-xl">
-                <span className="text-gray-400 font-medium">⛓️ Chain Partners</span>
-              </div>
-            </div>
-          </div>
         </div>
       </section>
 
@@ -722,13 +833,13 @@ function App() {
         <div className="relative max-w-4xl mx-auto">
           <div className="text-center mb-16">
             <h2 className="text-4xl md:text-5xl font-bold mb-6">
-              Ready to{' '}
-              <span className="gradient-text">10x Your Community</span>
+              Ready to <span className="gradient-text">10x Your Community</span>
               <br />
               Engagement?
             </h2>
             <p className="text-xl text-gray-300 max-w-2xl mx-auto">
-              Book your free 30-minute demo and see how AgentForge can transform your Discord community
+              Book your free 30-minute demo and see how AgentForge can transform
+              your Discord community
             </p>
           </div>
 
@@ -736,7 +847,10 @@ function App() {
             <form onSubmit={handleSubmit} className="space-y-6">
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 <div>
-                  <label htmlFor="name" className="block text-sm font-medium text-gray-300 mb-2">
+                  <label
+                    htmlFor="name"
+                    className="block text-sm font-medium text-gray-300 mb-2"
+                  >
                     Full Name *
                   </label>
                   <input
@@ -751,7 +865,10 @@ function App() {
                   />
                 </div>
                 <div>
-                  <label htmlFor="email" className="block text-sm font-medium text-gray-300 mb-2">
+                  <label
+                    htmlFor="email"
+                    className="block text-sm font-medium text-gray-300 mb-2"
+                  >
                     Email Address *
                   </label>
                   <input
@@ -769,7 +886,10 @@ function App() {
 
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 <div>
-                  <label htmlFor="company" className="block text-sm font-medium text-gray-300 mb-2">
+                  <label
+                    htmlFor="company"
+                    className="block text-sm font-medium text-gray-300 mb-2"
+                  >
                     Project/Company Name *
                   </label>
                   <input
@@ -784,7 +904,10 @@ function App() {
                   />
                 </div>
                 <div>
-                  <label htmlFor="projectType" className="block text-sm font-medium text-gray-300 mb-2">
+                  <label
+                    htmlFor="projectType"
+                    className="block text-sm font-medium text-gray-300 mb-2"
+                  >
                     Project Type *
                   </label>
                   <select
@@ -807,7 +930,10 @@ function App() {
               </div>
 
               <div>
-                <label htmlFor="message" className="block text-sm font-medium text-gray-300 mb-2">
+                <label
+                  htmlFor="message"
+                  className="block text-sm font-medium text-gray-300 mb-2"
+                >
                   Tell us about your community goals
                 </label>
                 <textarea
@@ -844,16 +970,19 @@ function App() {
           <div className="flex flex-col md:flex-row justify-between items-center">
             <div className="flex items-center space-x-2 mb-4 md:mb-0">
               <Bot className="h-8 w-8 text-purple-400" />
-              <span className="text-2xl font-bold gradient-text">AgentForge</span>
+              <span className="text-2xl font-bold gradient-text">
+                AgentForge
+              </span>
             </div>
             <div className="text-gray-400 text-sm">
-              © 2025 AgentForge. All rights reserved. Transforming Web3 communities with AI.
+              © 2025 AgentForge. All rights reserved. Transforming Web3
+              communities with AI.
             </div>
           </div>
         </div>
       </footer>
     </div>
-  )
+  );
 }
 
-export default App
+export default App;
