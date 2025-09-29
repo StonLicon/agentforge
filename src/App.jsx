@@ -18,6 +18,7 @@ import {
   Users,
   X
 } from 'lucide-react'
+import { motion } from 'framer-motion'
 
 import { Badge } from '@/components/ui/badge'
 import { Button } from '@/components/ui/button'
@@ -262,6 +263,26 @@ const FAQS = [
   }
 ]
 
+const fadeUp = {
+  hidden: { opacity: 0, y: 28 },
+  visible: { opacity: 1, y: 0 }
+}
+
+const fadeIn = {
+  hidden: { opacity: 0 },
+  visible: { opacity: 1 }
+}
+
+const staggerChildren = {
+  hidden: {},
+  visible: {
+    transition: {
+      staggerChildren: 0.12,
+      delayChildren: 0.1
+    }
+  }
+}
+
 function App() {
   const [menuOpen, setMenuOpen] = useState(false)
   const [pricingView, setPricingView] = useState('monthly')
@@ -287,8 +308,18 @@ function App() {
   return (
     <div className="min-h-screen bg-black text-white">
       <div className="fixed inset-0 pointer-events-none">
-        <div className="absolute inset-0 bg-[linear-gradient(to_right,#262626_1px,transparent_1px),linear-gradient(to_bottom,#262626_1px,transparent_1px)] bg-[size:4rem_4rem] opacity-10" />
-        <div className="absolute top-1/4 left-1/2 h-[32rem] w-[32rem] -translate-x-1/2 rounded-full bg-[#d4af37] opacity-5 blur-[140px]" />
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 0.12 }}
+          transition={{ duration: 1.4, ease: 'easeOut' }}
+          className="absolute inset-0 bg-[linear-gradient(to_right,#262626_1px,transparent_1px),linear-gradient(to_bottom,#262626_1px,transparent_1px)] bg-[size:4rem_4rem]"
+        />
+        <motion.div
+          initial={{ scale: 0.85, opacity: 0.25 }}
+          animate={{ scale: 1.15, opacity: 0.55 }}
+          transition={{ duration: 8, repeat: Infinity, repeatType: 'reverse', ease: 'easeInOut' }}
+          className="absolute top-1/4 left-1/2 h-[32rem] w-[32rem] -translate-x-1/2 rounded-full bg-[#d4af37] blur-[160px]"
+        />
       </div>
 
       <header className="fixed top-0 z-50 w-full border-b border-[#262626] bg-black/90 backdrop-blur-xl">
@@ -406,18 +437,26 @@ function App() {
       </header>
 
       <main className="relative z-10">
-        <section className="flex min-h-screen items-center justify-center px-6 pt-32 pb-24 lg:px-8">
-          <div className="mx-auto max-w-5xl text-center">
-            <Badge className="mx-auto mb-8">Trusted by 100+ Web3 ecosystems</Badge>
-            <h1 className="text-5xl font-bold tracking-tight sm:text-6xl md:text-7xl">
+        <motion.section
+          className="flex min-h-screen items-center justify-center px-6 pt-32 pb-24 lg:px-8"
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, amount: 0.6 }}
+          variants={staggerChildren}
+        >
+          <motion.div className="mx-auto max-w-5xl text-center" variants={staggerChildren}>
+            <motion.div variants={fadeUp}>
+              <Badge className="mx-auto mb-8">Trusted by 100+ Web3 ecosystems</Badge>
+            </motion.div>
+            <motion.h1 variants={fadeUp} className="text-5xl font-bold tracking-tight sm:text-6xl md:text-7xl">
               Enterprise AI agents
               <span className="block text-[#d4af37]">for mission-critical communities</span>
-            </h1>
-            <p className="mt-6 text-lg leading-relaxed text-[#a3a3a3] md:text-xl">
+            </motion.h1>
+            <motion.p variants={fadeUp} className="mt-6 text-lg leading-relaxed text-[#a3a3a3] md:text-xl">
               AgentForge eliminates wait times, keeps brand tone precise, and arms your leadership team with
               actionable insights from every conversation.
-            </p>
-            <div className="mt-10 flex flex-col items-center justify-center gap-4 sm:flex-row">
+            </motion.p>
+            <motion.div variants={fadeUp} className="mt-10 flex flex-col items-center justify-center gap-4 sm:flex-row">
               <Button size="lg" className="px-8 py-6 text-base">
                 Schedule Executive Briefing
                 <ArrowRight className="ml-2 h-5 w-5" />
@@ -429,56 +468,80 @@ function App() {
               >
                 View Live Implementations
               </Button>
-            </div>
-            <div className="mt-16 grid gap-8 sm:grid-cols-3">
+            </motion.div>
+            <motion.div variants={fadeUp} className="mt-16 grid gap-8 sm:grid-cols-3">
               {METRICS.map((metric) => (
-                <div key={metric.label} className="border-l border-[#d4af37] pl-6 text-left">
+                <motion.div
+                  key={metric.label}
+                  className="border-l border-[#d4af37] pl-6 text-left"
+                  variants={fadeUp}
+                  whileHover={{ x: 4, scale: 1.01 }}
+                  transition={{ type: 'spring', stiffness: 200, damping: 18 }}
+                >
                   <p className="text-3xl font-bold">{metric.value}</p>
                   <p className="mt-2 text-sm uppercase tracking-wide text-[#a3a3a3]">
                     {metric.label}
                   </p>
-                </div>
+                </motion.div>
               ))}
-            </div>
-          </div>
-        </section>
+            </motion.div>
+          </motion.div>
+        </motion.section>
 
-        <section id="features" className="bg-[#0a0a0a] py-24">
+        <motion.section
+          id="features"
+          className="py-24"
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, amount: 0.3 }}
+          variants={staggerChildren}
+        >
           <div className="mx-auto max-w-7xl px-6">
-            <div className="mx-auto mb-16 max-w-3xl text-center">
+            <motion.div className="mx-auto mb-16 max-w-3xl text-center" variants={fadeUp}>
               <h2 className="text-4xl font-bold tracking-tight">Enterprise-grade AI capabilities</h2>
               <p className="mt-4 text-lg text-[#a3a3a3]">
                 Built for regulation, scale, and the service expectations of modern Web3 communities.
               </p>
-            </div>
-            <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+            </motion.div>
+            <motion.div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3" variants={staggerChildren}>
               {FEATURES.map((feature) => {
                 const Icon = feature.icon
                 return (
-                  <Card
-                    key={feature.title}
-                    className="border border-[#262626] bg-[#1a1a1a] hover:border-[#d4af37]"
-                  >
-                    <CardContent className="p-8">
-                      <div className="mb-6 flex h-12 w-12 items-center justify-center rounded-xl border border-[#d4af37]/50 bg-[#0a0a0a]">
-                        <Icon className="h-6 w-6 text-[#d4af37]" />
-                      </div>
-                      <h3 className="text-xl font-semibold text-white">{feature.title}</h3>
-                      <p className="mt-3 text-base leading-relaxed text-[#a3a3a3]">
-                        {feature.description}
-                      </p>
-                    </CardContent>
-                  </Card>
+                  <motion.div key={feature.title} variants={fadeUp} whileHover={{ y: -6 }} transition={{ type: 'spring', stiffness: 250, damping: 20 }}>
+                    <Card className="border border-[#262626] bg-[#1a1a1a] hover:border-[#d4af37]">
+                      <CardContent className="p-8">
+                        <motion.div
+                          className="mb-6 flex h-12 w-12 items-center justify-center rounded-xl border border-[#d4af37]/50 bg-[#0a0a0a]"
+                          initial={{ rotate: -8 }}
+                          whileInView={{ rotate: 0 }}
+                          transition={{ duration: 0.6, ease: 'easeOut' }}
+                        >
+                          <Icon className="h-6 w-6 text-[#d4af37]" />
+                        </motion.div>
+                        <h3 className="text-xl font-semibold text-white">{feature.title}</h3>
+                        <p className="mt-3 text-base leading-relaxed text-[#a3a3a3]">
+                          {feature.description}
+                        </p>
+                      </CardContent>
+                    </Card>
+                  </motion.div>
                 )
               })}
-            </div>
+            </motion.div>
           </div>
-        </section>
+        </motion.section>
 
-        <section id="showcase" className="py-24">
+        <motion.section
+          id="showcase"
+          className="py-24"
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, amount: 0.35 }}
+          variants={staggerChildren}
+        >
           <div className="mx-auto max-w-7xl px-6">
             <div className="flex flex-col gap-12 lg:flex-row lg:items-center">
-              <div className="flex-1 space-y-6">
+              <motion.div className="flex-1 space-y-6" variants={fadeUp}>
                 <Badge variant="subtle" className="border-[#262626] text-[#fafafa]">
                   Deployment outcomes
                 </Badge>
@@ -490,15 +553,26 @@ function App() {
                   led by our strategy team.
                 </p>
                 <div className="space-y-4">
-                  {SHOWCASE.map((item) => (
-                    <div key={item.headline} className="border-l-2 border-[#d4af37] pl-6">
+                  {SHOWCASE.map((item, index) => (
+                    <motion.div
+                      key={item.headline}
+                      className="border-l-2 border-[#d4af37] pl-6"
+                      variants={fadeUp}
+                      transition={{ delay: index * 0.08 }}
+                    >
                       <p className="text-lg font-semibold text-white">{item.headline}</p>
                       <p className="mt-2 text-sm text-[#a3a3a3]">{item.detail}</p>
-                    </div>
+                    </motion.div>
                   ))}
                 </div>
-              </div>
-              <Card className="flex-1 border-[#262626] bg-[#0a0a0a]">
+              </motion.div>
+              <motion.div
+                variants={fadeUp}
+                className="flex-1"
+                whileHover={{ translateY: -6 }}
+                transition={{ type: 'spring', stiffness: 200, damping: 18 }}
+              >
+                <Card className="border-[#262626] bg-[#0a0a0a]">
                 <CardHeader>
                   <CardTitle className="text-2xl">AI agent engagement snapshot</CardTitle>
                   <CardDescription>
@@ -623,67 +697,95 @@ function App() {
                     Download sample transcript
                   </Button>
                 </CardFooter>
-              </Card>
+                </Card>
+              </motion.div>
             </div>
           </div>
-        </section>
+        </motion.section>
 
-        <section id="pricing" className="bg-[#0a0a0a] py-24">
+        <motion.section
+          id="pricing"
+          className="py-24"
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, amount: 0.35 }}
+          variants={staggerChildren}
+        >
           <div className="mx-auto max-w-7xl px-6">
-            <Tabs value={pricingView} onValueChange={setPricingView}>
-              <div className="text-center">
-                <h2 className="text-4xl font-bold tracking-tight text-white">Transparent pricing for every growth stage</h2>
-                <p className="mt-4 text-lg text-[#a3a3a3]">
-                  Annual agreements include co-authored success plans, executive workshops, and white-glove rollout.
-                </p>
-                <div className="mt-10 flex justify-center">
-                  <TabsList>
-                    <TabsTrigger value="monthly">Monthly</TabsTrigger>
-                    <TabsTrigger value="annual">Annual · save 20%</TabsTrigger>
-                  </TabsList>
+            <motion.div variants={fadeUp}>
+              <Tabs value={pricingView} onValueChange={setPricingView}>
+                <div className="text-center">
+                  <motion.h2 variants={fadeUp} className="text-4xl font-bold tracking-tight text-white">
+                    Transparent pricing for every growth stage
+                  </motion.h2>
+                  <motion.p variants={fadeUp} className="mt-4 text-lg text-[#a3a3a3]">
+                    Annual agreements include co-authored success plans, executive workshops, and white-glove rollout.
+                  </motion.p>
+                  <motion.div variants={fadeUp} className="mt-10 flex justify-center">
+                    <TabsList>
+                      <TabsTrigger value="monthly">Monthly</TabsTrigger>
+                      <TabsTrigger value="annual">Annual · save 20%</TabsTrigger>
+                    </TabsList>
+                  </motion.div>
                 </div>
-              </div>
-              <TabsContent value="monthly" className="mt-16">
-                <PricingGrid plans={PRICING.monthly} />
-              </TabsContent>
-              <TabsContent value="annual" className="mt-16">
-                <PricingGrid plans={PRICING.annual} />
-              </TabsContent>
-            </Tabs>
+                <TabsContent value="monthly" className="mt-16">
+                  <PricingGrid plans={PRICING.monthly} />
+                </TabsContent>
+                <TabsContent value="annual" className="mt-16">
+                  <PricingGrid plans={PRICING.annual} />
+                </TabsContent>
+              </Tabs>
+            </motion.div>
           </div>
-        </section>
+        </motion.section>
 
-        <section id="testimonials" className="py-24">
+        <motion.section
+          id="testimonials"
+          className="py-24"
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, amount: 0.3 }}
+          variants={staggerChildren}
+        >
           <div className="mx-auto max-w-7xl px-6">
-            <div className="mx-auto max-w-3xl text-center">
+            <motion.div className="mx-auto max-w-3xl text-center" variants={fadeUp}>
               <Badge variant="subtle" className="border-[#262626] text-[#fafafa]">
                 Executive endorsements
               </Badge>
               <h2 className="mt-6 text-4xl font-bold tracking-tight">
                 Teams that expect excellence choose AgentForge
               </h2>
-            </div>
-            <div className="mt-16 grid gap-6 md:grid-cols-3">
-              {TESTIMONIALS.map((item) => (
-                <Card key={item.name} className="border-[#262626] bg-[#0a0a0a]">
-                  <CardContent className="space-y-6 p-8">
-                    <Quote className="h-10 w-10 text-[#d4af37]" />
-                    <p className="text-lg leading-relaxed text-[#fafafa]">“{item.quote}”</p>
-                    <div>
-                      <p className="text-base font-semibold text-white">{item.name}</p>
-                      <p className="text-sm text-[#a3a3a3]">{item.title}</p>
-                    </div>
-                  </CardContent>
-                </Card>
+            </motion.div>
+            <motion.div className="mt-16 grid gap-6 md:grid-cols-3" variants={staggerChildren}>
+              {TESTIMONIALS.map((item, index) => (
+                <motion.div key={item.name} variants={fadeUp} transition={{ delay: index * 0.08 }}>
+                  <Card className="border-[#262626] bg-[#0a0a0a]">
+                    <CardContent className="space-y-6 p-8">
+                      <Quote className="h-10 w-10 text-[#d4af37]" />
+                      <p className="text-lg leading-relaxed text-[#fafafa]">“{item.quote}”</p>
+                      <div>
+                        <p className="text-base font-semibold text-white">{item.name}</p>
+                        <p className="text-sm text-[#a3a3a3]">{item.title}</p>
+                      </div>
+                    </CardContent>
+                  </Card>
+                </motion.div>
               ))}
-            </div>
+            </motion.div>
           </div>
-        </section>
+        </motion.section>
 
-        <section id="contact" className="bg-[#0a0a0a] py-24">
+        <motion.section
+          id="contact"
+          className="py-24"
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, amount: 0.35 }}
+          variants={staggerChildren}
+        >
           <div className="mx-auto max-w-6xl px-6">
             <div className="grid gap-12 lg:grid-cols-[2fr_3fr]">
-              <div className="space-y-6">
+              <motion.div className="space-y-6" variants={fadeUp}>
                 <Badge variant="subtle" className="border-[#262626] text-[#fafafa]">
                   Partner with us
                 </Badge>
@@ -715,9 +817,10 @@ function App() {
                   <p className="font-semibold text-white">Enterprise hotline</p>
                   <p>+1 (415) 555-0199</p>
                 </div>
-              </div>
+              </motion.div>
 
-              <Card className="border-[#262626] bg-[#1a1a1a]">
+              <motion.div variants={fadeUp}>
+                <Card className="border-[#262626] bg-[#1a1a1a]">
                 <CardContent className="p-10">
                   <form className="space-y-6" onSubmit={handleSubmit}>
                     <div className="grid gap-6 md:grid-cols-2">
@@ -805,23 +908,34 @@ function App() {
                   </form>
                 </CardContent>
               </Card>
+              </motion.div>
             </div>
           </div>
-        </section>
+        </motion.section>
 
-        <section className="py-24">
+        <motion.section
+          className="py-24"
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, amount: 0.35 }}
+          variants={staggerChildren}
+        >
           <div className="mx-auto max-w-5xl px-6">
-            <h2 className="text-3xl font-bold tracking-tight text-white">Frequently asked questions</h2>
-            <Accordion type="single" collapsible className="mt-10 divide-y divide-[#262626]">
-              {FAQS.map((item) => (
-                <AccordionItem value={item.question} key={item.question} className="border-b border-[#262626]">
-                  <AccordionTrigger>{item.question}</AccordionTrigger>
-                  <AccordionContent>{item.answer}</AccordionContent>
-                </AccordionItem>
-              ))}
-            </Accordion>
+            <motion.h2 variants={fadeUp} className="text-3xl font-bold tracking-tight text-white">
+              Frequently asked questions
+            </motion.h2>
+            <motion.div variants={fadeUp}>
+              <Accordion type="single" collapsible className="mt-10 divide-y divide-[#262626]">
+                {FAQS.map((item) => (
+                  <AccordionItem value={item.question} key={item.question} className="border-b border-[#262626]">
+                    <AccordionTrigger>{item.question}</AccordionTrigger>
+                    <AccordionContent>{item.answer}</AccordionContent>
+                  </AccordionItem>
+                ))}
+              </Accordion>
+            </motion.div>
           </div>
-        </section>
+        </motion.section>
       </main>
 
       <footer className="border-t border-[#262626] bg-black py-12">
@@ -852,56 +966,68 @@ function App() {
 
 function PricingGrid({ plans }) {
   return (
-    <div className="grid gap-8 md:grid-cols-3">
-      {plans.map((plan) => (
-        <Card
-          key={plan.name}
-          className={`flex h-full flex-col border ${
-            plan.highlight ? 'border-[#d4af37] shadow-[0_40px_80px_-60px_rgba(212,175,55,0.6)]' : 'border-[#262626]'
-          } bg-[#1a1a1a]`}
-        >
-          {plan.highlight && (
-            <div className="absolute left-1/2 top-0 flex -translate-y-1/2 -translate-x-1/2 items-center rounded-full border border-[#d4af37] bg-[#0a0a0a] px-4 py-1 text-xs font-semibold uppercase tracking-widest text-[#d4af37]">
-              Most Popular
-            </div>
-          )}
-          <CardHeader>
-            <CardTitle className="text-2xl font-semibold text-white">{plan.name}</CardTitle>
-            <div className="flex items-baseline space-x-2">
-              <span className={`text-5xl font-bold ${plan.highlight ? 'text-[#d4af37]' : 'text-white'}`}>
-                {plan.price}
-              </span>
-              <span className="text-sm uppercase tracking-wide text-[#a3a3a3]">
-                {plan.suffix ?? '/month'}
-              </span>
-            </div>
-            <CardDescription className="text-[#a3a3a3]">{plan.description}</CardDescription>
-            <p className="text-sm font-semibold text-white">{plan.subtitle}</p>
-          </CardHeader>
-          <CardContent className="flex-1 space-y-3">
-            {plan.features.map((feature) => (
-              <div key={feature} className="flex items-start space-x-3">
-                <div className="mt-1 flex h-5 w-5 items-center justify-center rounded-full bg-[#d4af37]/10">
-                  <Check className="h-3 w-3 text-[#d4af37]" />
-                </div>
-                <span className="text-sm leading-relaxed text-[#a3a3a3]">{feature}</span>
+    <motion.div
+      className="grid gap-8 md:grid-cols-3"
+      initial="hidden"
+      whileInView="visible"
+      viewport={{ once: true, amount: 0.2 }}
+      variants={staggerChildren}
+    >
+      {plans.map((plan, index) => (
+        <motion.div key={plan.name} variants={fadeUp} transition={{ delay: index * 0.08 }}>
+          <Card
+            className={`flex h-full flex-col border ${
+              plan.highlight ? 'border-[#d4af37] shadow-[0_40px_80px_-60px_rgba(212,175,55,0.6)]' : 'border-[#262626]'
+            } bg-[#1a1a1a]`}
+          >
+            {plan.highlight && (
+              <motion.div
+                className="absolute left-1/2 top-0 flex -translate-y-1/2 -translate-x-1/2 items-center rounded-full border border-[#d4af37] bg-[#0a0a0a] px-4 py-1 text-xs font-semibold uppercase tracking-widest text-[#d4af37]"
+                initial={{ scale: 0.85, opacity: 0 }}
+                animate={{ scale: 1, opacity: 1 }}
+                transition={{ duration: 0.4, ease: 'easeOut' }}
+              >
+                Most Popular
+              </motion.div>
+            )}
+            <CardHeader>
+              <CardTitle className="text-2xl font-semibold text-white">{plan.name}</CardTitle>
+              <div className="flex items-baseline space-x-2">
+                <span className={`text-5xl font-bold ${plan.highlight ? 'text-[#d4af37]' : 'text-white'}`}>
+                  {plan.price}
+                </span>
+                <span className="text-sm uppercase tracking-wide text-[#a3a3a3]">
+                  {plan.suffix ?? '/month'}
+                </span>
               </div>
-            ))}
-          </CardContent>
-          <CardFooter>
-            <Button
-              className={`w-full ${
-                plan.highlight
-                  ? 'bg-[#d4af37] text-black hover:bg-[#c9a227]'
-                  : 'bg-white text-black hover:bg-[#e5e5e5]'
-              }`}
-            >
-              {plan.cta}
-            </Button>
-          </CardFooter>
-        </Card>
+              <CardDescription className="text-[#a3a3a3]">{plan.description}</CardDescription>
+              <p className="text-sm font-semibold text-white">{plan.subtitle}</p>
+            </CardHeader>
+            <CardContent className="flex-1 space-y-3">
+              {plan.features.map((feature) => (
+                <div key={feature} className="flex items-start space-x-3">
+                  <div className="mt-1 flex h-5 w-5 items-center justify-center rounded-full bg-[#d4af37]/10">
+                    <Check className="h-3 w-3 text-[#d4af37]" />
+                  </div>
+                  <span className="text-sm leading-relaxed text-[#a3a3a3]">{feature}</span>
+                </div>
+              ))}
+            </CardContent>
+            <CardFooter>
+              <Button
+                className={`w-full ${
+                  plan.highlight
+                    ? 'bg-[#d4af37] text-black hover:bg-[#c9a227]'
+                    : 'bg-white text-black hover:bg-[#e5e5e5]'
+                }`}
+              >
+                {plan.cta}
+              </Button>
+            </CardFooter>
+          </Card>
+        </motion.div>
       ))}
-    </div>
+    </motion.div>
   )
 }
 
