@@ -16,11 +16,9 @@ import {
   TrendingUp,
   Check,
   Play,
-  Award,
-  Building,
-  HeadphonesIcon,
-  ChevronDown,
+  Pause,
 } from "lucide-react";
+import { RiScrollToBottomLine } from "react-icons/ri";
 
 function App() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -49,69 +47,66 @@ function App() {
   const features = [
     {
       icon: MessageSquare,
-      title: "Intelligent Q&A System",
+      title: "Smart Q&A",
       description:
-        "Advanced AI that understands your project's context and provides accurate, real-time responses to complex user queries.",
+        "AI answers project-specific questions instantly with deep knowledge of your ecosystem",
     },
     {
       icon: Users,
-      title: "Automated Onboarding",
+      title: "Onboarding Flows",
       description:
-        "Seamlessly guide new community members through your ecosystem with personalized welcome flows and educational content.",
+        "Guides new members through your ecosystem with personalized welcome sequences",
     },
     {
       icon: Zap,
-      title: "Real-time Notifications",
+      title: "Real-time Updates",
       description:
-        "Instant delivery of critical updates, announcements, and market alerts to keep your community informed and engaged.",
+        "Pushes news, announcements, price alerts, and governance updates automatically",
     },
     {
       icon: Shield,
-      title: "Advanced Moderation",
+      title: "Community Moderation",
       description:
-        "AI-powered content filtering and community management tools that maintain quality while reducing manual oversight.",
+        "Auto-moderates spam and maintains quality discussions with advanced AI filtering",
     },
     {
       icon: BarChart3,
-      title: "Comprehensive Analytics",
+      title: "Analytics Dashboard",
       description:
-        "Deep insights into community engagement, user behavior patterns, and growth metrics to optimize your strategy.",
+        "Track engagement metrics, user satisfaction, and community growth patterns",
     },
     {
       icon: Globe,
-      title: "Global Reach",
+      title: "Multi-language Support",
       description:
-        "Multi-language support and localization features to serve diverse communities across different regions and cultures.",
+        "Serves global communities with native language support for 20+ languages",
     },
   ];
 
   const testimonials = [
     {
-      name: "Alexander Chen",
-      company: "DeFi Global Protocol",
-      role: "Chief Technology Officer",
+      name: "Alex Chen",
+      company: "DeFiProtocol",
+      role: "Founder",
       content:
-        "AgentForge has revolutionized our community management. We've seen a 380% increase in user engagement and dramatically reduced our support overhead. The AI's understanding of complex DeFi concepts is impressive.",
-      results: "380% engagement increase",
-      avatar: "AC",
+        "AgentForge increased our community engagement by 340% and reduced support tickets by 60%. Game-changer for our growth.",
+      results: "340% engagement increase",
     },
     {
       name: "Sarah Martinez",
-      company: "Enterprise Blockchain Solutions",
-      role: "Head of Community Operations",
+      company: "CryptoArt Collective",
+      role: "Community Manager",
       content:
-        "The 24/7 intelligent support has been a game-changer. Our community receives instant, accurate responses to technical questions, allowing our team to focus on strategic initiatives rather than repetitive support tasks.",
-      results: "24/7 automated excellence",
-      avatar: "SM",
+        "The AI agent handles complex questions about our NFT mechanics 24/7. Our community loves the instant, accurate responses.",
+      results: "24/7 automated support",
     },
     {
       name: "Marcus Thompson",
-      company: "Digital Asset Management",
-      role: "VP of User Experience",
+      company: "GameFi Champions",
+      role: "Head of Growth",
       content:
-        "Implementation of AgentForge increased our new user onboarding completion rate from 28% to 91%. The personalized guidance and intelligent flow management exceeded all our expectations.",
-      results: "91% onboarding success",
-      avatar: "MT",
+        "Since implementing AgentForge, our new user onboarding completion rate jumped from 23% to 87%. Incredible ROI.",
+      results: "87% onboarding completion",
     },
   ];
 
@@ -165,66 +160,61 @@ function App() {
 
   const pricingTiers = [
     {
-      name: "Professional",
-      price: "$599",
+      name: "Starter",
+      price: "$299",
       period: "/month",
-      description: "Ideal for growing organizations",
-      subtitle: "Up to 10,000 members",
+      description: "Perfect for small communities",
+      subtitle: "< 5K members",
       features: [
-        "Advanced AI conversation engine",
-        "Custom knowledge base training",
-        "Priority support (4-hour response)",
-        "Advanced analytics dashboard",
-        "Multi-platform integration",
-        "Custom branding options",
-        "API access included",
-        "Monthly strategy consultation",
+        "1 Discord server integration",
+        "Pre-trained on 50+ crypto topics",
+        "Basic Q&A responses",
+        "Community support",
+        "10,000 messages/month",
+        "Basic analytics dashboard",
       ],
+      notIncluded: ["Custom training", "Multi-server support"],
       cta: "Start Free Trial",
       popular: false,
-      accent: "border-white/20",
+    },
+    {
+      name: "Professional",
+      price: "$699",
+      period: "/month",
+      description: "Perfect for growing projects",
+      subtitle: "5K-20K members",
+      features: [
+        "Up to 3 Discord servers",
+        "Custom training on YOUR project",
+        "Advanced personality customization",
+        "Priority support (< 4 hour response)",
+        "50,000 messages/month",
+        "Advanced analytics + exports",
+        "Custom commands and workflows",
+        "Integration with your website/docs",
+      ],
+      cta: "Start Free Trial",
+      popular: true,
     },
     {
       name: "Enterprise",
-      price: "$1,299",
-      period: "/month",
-      description: "Complete solution for large teams",
-      subtitle: "Up to 50,000 members",
-      features: [
-        "Everything in Professional",
-        "Dedicated account manager",
-        "Custom AI model development",
-        "White-label deployment",
-        "Advanced security features",
-        "99.9% uptime SLA",
-        "Unlimited integrations",
-        "Weekly performance reviews",
-        "Custom onboarding program",
-      ],
-      cta: "Contact Sales",
-      popular: true,
-      accent: "border-yellow-500/50 bg-gradient-to-br from-yellow-500/5 to-amber-500/5",
-    },
-    {
-      name: "Global Scale",
       price: "Custom",
       period: "pricing",
-      description: "Enterprise-grade for global operations",
-      subtitle: "500,000+ members",
+      description: "Perfect for major projects",
+      subtitle: "20K+ members",
       features: [
-        "Everything in Enterprise",
-        "Multi-region deployment",
-        "Custom compliance solutions",
-        "Dedicated infrastructure",
-        "Advanced AI customization",
-        "24/7 premium support",
-        "Custom contract terms",
-        "Executive-level reporting",
-        "Global rollout assistance",
+        "Unlimited Discord servers",
+        "White-label solution",
+        "Dedicated customer success manager",
+        "Custom AI model training",
+        "Unlimited messages",
+        "API access and webhooks",
+        "Custom integrations (Telegram, Twitter)",
+        "99.9% SLA guarantee",
+        "Premium onboarding (2 weeks)",
       ],
-      cta: "Schedule Consultation",
+      cta: "Contact Sales",
       popular: false,
-      accent: "border-white/20",
     },
   ];
 
